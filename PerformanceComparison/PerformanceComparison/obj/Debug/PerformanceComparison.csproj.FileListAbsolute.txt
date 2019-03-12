@@ -1,0 +1,7 @@
+C:\Users\Atul\source\repos\PerformanceComparison\PerformanceComparison\bin\Debug\PerformanceComparison.exe.config
+C:\Users\Atul\source\repos\PerformanceComparison\PerformanceComparison\bin\Debug\PerformanceComparison.exe
+C:\Users\Atul\source\repos\PerformanceComparison\PerformanceComparison\bin\Debug\PerformanceComparison.pdb
+C:\Users\Atul\source\repos\PerformanceComparison\PerformanceComparison\obj\Debug\PerformanceComparison.csprojAssemblyReference.cache
+C:\Users\Atul\source\repos\PerformanceComparison\PerformanceComparison\obj\Debug\PerformanceComparison.csproj.CoreCompileInputs.cache
+C:\Users\Atul\source\repos\PerformanceComparison\PerformanceComparison\obj\Debug\PerformanceComparison.exe
+C:\Users\Atul\source\repos\PerformanceComparison\PerformanceComparison\obj\Debug\PerformanceComparison.pdb
