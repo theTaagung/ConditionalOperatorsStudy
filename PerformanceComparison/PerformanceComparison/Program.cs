@@ -25,6 +25,10 @@ namespace PerformanceComparison
                     //DecideDayIfFirst();
                     //DecideDayIfLast();
 
+                    //Added for int value comparison
+                    //DecideValueIfFirst();
+                    //DecideValueIfLast();
+                    
                     //DecideDayIfSimpleFirst();
                     //DecideDayIfSimpleLast();
 
@@ -44,6 +48,94 @@ namespace PerformanceComparison
             Console.ReadLine();
         }
 
+          static void DecideValueIfFirst()
+        {
+            int day = 1;
+            string dayType = string.Empty;
+
+
+            for (int i = 0; i < SampleSize; i++)
+            {
+                if (day == 1)
+                {
+                    dayType = "Weekend";
+                }
+                else if (day == 3)
+                {
+                    dayType = "Weekend";
+                }
+                else if (day == 4)
+                {
+                    dayType = "Weekday";
+                }
+                else if (day == 5)
+                {
+                    dayType = "Weekday";
+                }
+                else if (day == 6)
+                {
+                    dayType = "Weekday";
+                }
+                else if (day == 7)
+                {
+                    dayType = "Weekday";
+                }
+                else if (day == 8)
+                {
+                    dayType = "Weekday";
+                }
+
+                else
+                {
+                    dayType = "Something Wrong !!!";
+                }
+            }
+        }
+        static void DecideValueIfLast()
+        {
+            int day = 1;
+            string dayType = string.Empty;
+
+
+            for (int i = 0; i < SampleSize; i++)
+            {
+
+                if (day == 2)
+                {
+                    dayType = "Weekend";
+                }
+                else if (day == 3)
+                {
+                    dayType = "Weekday";
+                }
+                else if (day == 4)
+                {
+                    dayType = "Weekday";
+                }
+                else if (day == 5)
+                {
+                    dayType = "Weekday";
+                }
+                else if (day == 6)
+                {
+                    dayType = "Weekday";
+                }
+                else if (day == 7)
+                {
+                    dayType = "Weekday";
+                }
+                else if (day == 1)
+                {
+                    dayType = "Weekend";
+                }
+                else
+                {
+                    dayType = "Something Wrong !!!";
+                }
+            }
+        }
+
+        
         static void DecideDayIfFirst()
         {
             string day = "Saturday";
