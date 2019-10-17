@@ -22,19 +22,49 @@ namespace PerformanceComparison
                 for (int i = 0; i < loop; i++)
                 {
                     sw.Start();
-                    //DecideDayIfFirst();
-                    //DecideDayIfLast();
 
-                    //Added for int value comparison
-                    //DecideValueIfFirst();
-                    //DecideValueIfLast();
-                    
-                    //DecideDayIfSimpleFirst();
-                    //DecideDayIfSimpleLast();
+                    /*
+                     * Usage: Uncomment each test one at a time and record results
+                     */
 
+                    /*
+                     * It was argued that integer comparison is faster than string comparison
+                     * and this demonstrates that it true.
+                     */
+                    //BestCaseIfThenInteger();
+                    //WorstCaseIfThenInteger();
 
-                    //DayComparisonSwitchFirst();
-                    //DayComparisonSwitchLast();
+                    /*
+                     * Matching on the best case is the fastest of the set
+                     */
+                    //BestCaseIfThen();
+                    //WorstCaseIfThen();
+
+                    /*
+                     * Time is constant because each condition gets evaluated
+                     * This is the worst of all options
+                     */
+                    //BestCaseMultipleIf();
+                    //WorstCaseMultipleIf();
+
+                    /*
+                     * Similar to IfThen, but less code/more readable
+                     */
+                    //BestCaseMultiORIf();
+                    //WorstCaseMultiORIf();
+
+                    /*
+                     * switch is the fastest on average and constant for each case
+                     */
+                    //BestCaseSwitch();
+                    //WorstCaseSwitch();
+
+                    /*
+                     * Switch is the best case and you can make it even better
+                     * with fall-through cases
+                     */
+                    //BestCaseMultiORSwitch();
+                    //WorstCaseMultiORSwitch();
 
                     sw.Stop();
                     ticksSum = ticksSum + sw.ElapsedTicks;
@@ -48,7 +78,7 @@ namespace PerformanceComparison
             Console.ReadLine();
         }
 
-          static void DecideValueIfFirst()
+        static void BestCaseIfThenInteger()
         {
             int day = 1;
             string dayType = string.Empty;
@@ -91,7 +121,7 @@ namespace PerformanceComparison
                 }
             }
         }
-        static void DecideValueIfLast()
+        static void WorstCaseIfThenInteger()
         {
             int day = 1;
             string dayType = string.Empty;
@@ -135,8 +165,7 @@ namespace PerformanceComparison
             }
         }
 
-        
-        static void DecideDayIfFirst()
+        static void BestCaseIfThen()
         {
             string day = "Saturday";
             string dayType = string.Empty;
@@ -179,7 +208,7 @@ namespace PerformanceComparison
                 }
             }
         }
-        static void DecideDayIfLast()
+        static void WorstCaseIfThen()
         {
             string day = "Saturday";
             string dayType = string.Empty;
@@ -223,7 +252,7 @@ namespace PerformanceComparison
             }
         }
 
-        static void DecideDayIfSimpleFirst()
+        static void BestCaseMultipleIf()
         {
             string day = "Saturday";
             string dayType = string.Empty;
@@ -265,7 +294,7 @@ namespace PerformanceComparison
                 }
             }
         }
-        static void DecideDayIfSimpleLast()
+        static void WorstCaseMultipleIf()
         {
             string day = "Saturday";
             string dayType = string.Empty;
@@ -309,7 +338,55 @@ namespace PerformanceComparison
             }
         }
 
-        static void DayComparisonSwitchFirst()
+
+        static void BestCaseMultiORIf()
+        {
+            string day = "Saturday";
+            string dayType = string.Empty;
+
+
+            for (int i = 0; i < SampleSize; i++)
+            {
+                if (day == "Saturday" || day == "Sunday")
+                {
+                    dayType = "Weekend";
+                }
+                else if (day == "Monday" || day == "Tuesday"
+                    || day == "Wednesday" || day == "Thursday" || day == "Friday")
+                {
+                    dayType = "Weekday";
+                }
+                else
+                {
+                    dayType = "Something Wrong !!!";
+                }
+            }
+        }
+        static void WorstCaseMultiORIf()
+        {
+            string day = "Friday";//"Saturday";    
+            string dayType = string.Empty;
+
+
+            for (int i = 0; i < SampleSize; i++)
+            {
+                if (day == "Saturday" || day == "Sunday")
+                {
+                    dayType = "Weekend";
+                }
+                else if (day == "Monday" || day == "Tuesday"
+                    || day == "Wednesday" || day == "Thursday" || day == "Friday")
+                {
+                    dayType = "Weekday";
+                }
+                else
+                {
+                    dayType = "Something Wrong !!!";
+                }
+            }
+        }
+
+        static void BestCaseSwitch()
         {
             string dayType = string.Empty;
             string day = "Saturday";
@@ -320,7 +397,7 @@ namespace PerformanceComparison
                     case "Saturday":
                         dayType = "Weekend";
                         break;
-                    case "SundayS":
+                    case "Sunday":
                         dayType = "Weekend";
                         break;
                     case "Monday":
@@ -344,7 +421,7 @@ namespace PerformanceComparison
             }
 
         }
-        static void DayComparisonSwitchLast()
+        static void WorstCaseSwitch()
         {
             string dayType = string.Empty;
             string day = "Saturday";
@@ -380,5 +457,56 @@ namespace PerformanceComparison
 
         }
 
+
+        static void BestCaseMultiORSwitch()
+        {
+            string dayType = string.Empty;
+            string day = "Saturday";
+            for (int i = 0; i < SampleSize; i++)
+            {
+                switch (day)
+                {
+                    case "Sunday":
+                    case "Saturday":
+                        dayType = "Weekend";
+                        break;
+                    case "Monday":
+                    case "Tuesday":
+                    case "Wednesday":
+                    case "Thursday":
+                    case "Friday":
+                        dayType = "Weekday";
+                        break;
+                    default:
+                        dayType = "Something wrong !!";
+                        break;
+                }
+            }
+        }
+        static void WorstCaseMultiORSwitch()
+        {
+            string dayType = string.Empty;
+            string day = "Friday";//"Saturday";    
+            for (int i = 0; i < SampleSize; i++)
+            {
+                switch (day)
+                {
+                    case "Sunday":
+                    case "Saturday":
+                        dayType = "Weekend";
+                        break;
+                    case "Monday":
+                    case "Tuesday":
+                    case "Wednesday":
+                    case "Thursday":
+                    case "Friday":
+                        dayType = "Weekday";
+                        break;
+                    default:
+                        dayType = "Something wrong !!";
+                        break;
+                }
+            }
+        }
     }
 }
